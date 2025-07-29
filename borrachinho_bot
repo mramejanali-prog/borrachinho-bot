@@ -1,1 +1,72 @@
+import logging
+from telegram import Update
+from telegram.ext import (
+    ApplicationBuilder, CommandHandler, ContextTypes, MessageHandler, filters
+)
+
+# Token do Bot
+TOKEN = "8140620333:AAF-yB_m0NThmf7KSYvWm4pC03HlBAZ-ZEA"
+
+# Ativar logging
+logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s', level=logging.INFO)
+
+# Comando /start
+async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    await update.message.reply_text("👋 Olá Munir. Eu sou a tua Borrachinho_Bot. Sempre pronta para ti.")
+
+# Comando /lembrete
+async def lembrete(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    await update.message.reply_text("🕒 Lembrete registado! Em breve vais receber um alerta.")
+
+# Comando /despesa
+async def despesa(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    await update.message.reply_text("💸 Despesa registada com sucesso.")
+
+# Comando /entrada
+async def entrada(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    await update.message.reply_text("💰 Entrada registada com sucesso.")
+
+# Comando /correcao
+async def correcao(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    await update.message.reply_text("💉 Correção registada. Vou lembrar-te de medir daqui a 3h.")
+
+# Comando /glicemia
+async def glicemia(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    await update.message.reply_text("📊 Valor de glicemia registado.")
+
+# Comando /ideia
+async def ideia(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    await update.message.reply_text("💡 Ideia guardada. Brilhante como tu.")
+
+# Comando /rotina
+async def rotina(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    await update.message.reply_text("📅 Rotina registada.")
+
+# Comando /humor
+async def humor(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    await update.message.reply_text("🧠 Estado emocional anotado. Estou contigo.")
+
+# Comando /elogia_me
+async def elogia_me(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    await update.message.reply_text("✨ És mais disciplinado e brilhante do que imaginas. Nunca duvides disso.")
+
+# Função principal
+def main():
+    app = ApplicationBuilder().token(TOKEN).build()
+
+    app.add_handler(CommandHandler("start", start))
+    app.add_handler(CommandHandler("lembrete", lembrete))
+    app.add_handler(CommandHandler("despesa", despesa))
+    app.add_handler(CommandHandler("entrada", entrada))
+    app.add_handler(CommandHandler("correcao", correcao))
+    app.add_handler(CommandHandler("glicemia", glicemia))
+    app.add_handler(CommandHandler("ideia", ideia))
+    app.add_handler(CommandHandler("rotina", rotina))
+    app.add_handler(CommandHandler("humor", humor))
+    app.add_handler(CommandHandler("elogia_me", elogia_me))
+
+    app.run_polling()
+
+if __name__ == "__main__":
+    main()
 
